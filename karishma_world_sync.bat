@@ -1,118 +1,54 @@
 @echo off
-setlocal enabledelayedexpansion
+:: =======================================
+:: Karishma World Sync Script (Windows)
+:: =======================================
 
-set "COMMIT_NAME=Lotso"
+:: IMPORTANT: Change this to your GitHub name or system username
+set "COMMIT_NAME=YourName"
 
+echo ==========================================
+echo        Karishma World Sync Tool
+echo ==========================================
 echo.
-echo ===============================
-echo 🎮 Karishma World Sync
-echo ===============================
+echo 1. Pull latest world from GitHub
+echo 2. Save your world and push to GitHub
+echo 3. Exit
 echo.
-echo What do you want to do?
+
+set /p choice=Choose an option (1/2/3): 
+
+if "%choice%"=="1" goto pull
+if "%choice%"=="2" goto push
+if "%choice%"=="3" goto end
+
+echo Invalid option. Exiting.
+goto end
+
+:pull
 echo.
-echo 1. Load latest world from online (before playing)
-echo 2. Save your world to online (after playing)
+echo [INFO] Pulling latest changes from GitHub...
+git stash >nul 2>&1
+git pull origin main
+git stash pop >nul 2>&1
+echo [DONE] Latest world pulled successfully.
+pause
+goto end
+
+:push
 echo.
-set /p choice="Type 1 or 2: "
-
-echo.
-echo -----------------------------
-
-if "%choice%"=="1" (
-    rem Check if there are uncommitted changes
-    git status --porcelain > temp_status.txt
-    set /p changes=<temp_status.txt
-    del temp_status.txt
-
-    if not "!changes!"=="" (
-        echo.
-        echo ⚠️ Your world files look different than the one online.
-        echo Maybe you forgot to save last time,
-        echo or maybe a friend played and saved new updates.
-        echo.
-        echo 👉 Press 1 to load the updated world from your friend.
-        echo 🔙 Press 2 to cancel and go back.
-        echo.
-        set /p pullChoice="Type 1 or 2: "
-        echo.
-        echo -----------------------------
-
-        if "%pullChoice%"=="1" (
-            echo 📦 Backing up your current world just in case...
-            git stash --quiet
-
-            echo -----------------------------
-            echo 🌍 Downloading latest world from GitHub...
-            git pull --rebase origin main --quiet
-
-            echo -----------------------------
-            echo 🔁 Restoring your local work...
-            git stash pop --quiet
-
-            echo -----------------------------
-            echo ✅ Your world is now updated to the latest version!
-
-            echo -----------------------------
-            echo 💬 Last update message from your friend:
-            echo -----------------------------
-            for /f "delims=" %%i in ('git log -1 --pretty=format:"%%an: %%s"') do echo %%i
-            echo.
-            echo -----------------------------
-            echo 🕹️ You're ready to play!
-            echo -----------------------------
-            goto :EOF
-        ) else (
-            echo.
-            echo 🔙 Cancelled. Returning to main menu.
-            echo.
-            call "%~f0"
-            goto :EOF
-        )
-    ) else (
-        echo -----------------------------
-        echo 🌍 Checking for updates from GitHub...
-        git pull --rebase origin main --quiet
-        echo -----------------------------
-        echo ✅ You already have the latest world!
-        echo -----------------------------
-        echo.
-        echo 💬 Last update message from your friend:
-        echo -----------------------------
-        for /f "delims=" %%i in ('git log -1 --pretty=format:"%%an: %%s"') do echo %%i
-        echo.
-        echo -----------------------------
-        echo 🕹️ Ready to start your Minecraft server!
-        echo -----------------------------
-        goto :EOF
-    )
-) else if "%choice%"=="2" (
-    echo.
-    echo 💾 Saving your updated world for everyone...
-    echo 👤 Your name: %COMMIT_NAME%
-    echo.
-    set /p DESCRIPTION=📝 What did you build or change? 
-
-    if "%DESCRIPTION%"=="" (
-        set DESCRIPTION=(blank description)
-    ) else (
-        set DESCRIPTION=(%DESCRIPTION%)
-    )
-
-    echo -----------------------------
-    git add .
-    git commit -m "Save Latest Karishma World By %COMMIT_NAME% - %DESCRIPTION%" > nul
-    git push origin main --quiet
-    echo ✅ Your world is now saved online!
-    echo -----------------------------
-    echo.
-    echo 💬 Friends will see this message:
-    echo -----------------------------
-    echo "%COMMIT_NAME%: %DESCRIPTION%"
-    echo -----------------------------
-    goto :EOF
-) else (
-    echo.
-    echo ❌ Please type 1 or 2 to choose.
-    echo -----------------------------
-    exit /b 1
+set /p "commitMsg=Enter a description of your changes: "
+if "%commitMsg%"=="" (
+    set "commitMsg=(blank description)"
 )
+
+echo.
+echo [INFO] Adding and committing changes...
+git add .
+git commit -m "Save Latest Karishma World By %COMMIT_NAME% - %commitMsg%"
+git push origin main
+echo [DONE] World saved and pushed to GitHub.
+pause
+goto end
+
+:end
+exit
