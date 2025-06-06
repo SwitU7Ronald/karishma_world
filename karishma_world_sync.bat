@@ -1,54 +1,117 @@
 @echo off
-:: =======================================
-:: Karishma World Sync Script (Windows)
-:: =======================================
+:: ============================================
+:: 🎮 Karishma World Sync - Windows Version
+:: ============================================
 
-:: IMPORTANT: Change this to your GitHub name or system username
-set "COMMIT_NAME=YourName"
+setlocal EnableDelayedExpansion
 
-echo ==========================================
-echo        Karishma World Sync Tool
-echo ==========================================
+:: Set your name here
+set "COMMIT_NAME=LoTsoxD"
+
 echo.
-echo 1. Pull latest world from GitHub
-echo 2. Save your world and push to GitHub
-echo 3. Exit
+echo ===============================
+echo  Karishma World Sync - Windows
+echo ===============================
+echo.
+echo What do you want to do?
+echo.
+echo 1. Load latest world from online (before playing)
+echo 2. Save your world to online (after playing)
 echo.
 
-set /p choice=Choose an option (1/2/3): 
+set /p choice=Type 1 or 2: 
+echo.
+echo -----------------------------
 
 if "%choice%"=="1" goto pull
 if "%choice%"=="2" goto push
-if "%choice%"=="3" goto end
-
-echo Invalid option. Exiting.
+echo ❌ Invalid option. Please type 1 or 2.
 goto end
 
 :pull
-echo.
-echo [INFO] Pulling latest changes from GitHub...
-git stash >nul 2>&1
-git pull origin main
-git stash pop >nul 2>&1
-echo [DONE] Latest world pulled successfully.
-pause
-goto end
+:: Check for uncommitted changes
+for /f %%i in ('git status --porcelain') do set "changes=1"
 
-:push
-echo.
-set /p "commitMsg=Enter a description of your changes: "
-if "%commitMsg%"=="" (
-    set "commitMsg=(blank description)"
+if defined changes (
+    echo ⚠️ Your world files look different than the one online.
+    echo Maybe you forgot to save last time,
+    echo or maybe a friend played and saved new updates.
+    echo.
+    echo 👉 Press 1 to load the updated world from your friend.
+    echo 🔙 Press 2 to cancel and go back.
+    echo.
+    set /p pullChoice=Type 1 or 2: 
+    echo -----------------------------
+
+    if "%pullChoice%"=="1" (
+        echo 📦 Backing up your current world just in case...
+        git stash >nul
+
+        echo -----------------------------
+        echo 🌍 Downloading latest world from GitHub...
+        git pull --rebase origin main >nul
+
+        echo -----------------------------
+        echo 🔁 Restoring your local work...
+        git stash pop >nul
+
+        echo -----------------------------
+        echo ✅ Your world is now updated to the latest version!
+        echo -----------------------------
+        echo 💬 Last update message from your friend:
+        git log -1 --pretty=format:"%%an: %%s"
+        echo.
+        echo -----------------------------
+        echo 🕹️ You're ready to play!
+        echo -----------------------------
+        goto end
+    ) else (
+        echo 🔙 Cancelled. Returning to main menu.
+        echo.
+        call "%~f0"
+        goto end
+    )
+) else (
+    echo 🌍 Checking for updates from GitHub...
+    git pull --rebase origin main >nul
+    echo -----------------------------
+    echo ✅ You already have the latest world!
+    echo -----------------------------
+    echo 💬 Last update message from your friend:
+    git log -1 --pretty=format:"%%an: %%s"
+    echo.
+    echo -----------------------------
+    echo 🕹️ Ready to start your Minecraft server!
+    echo -----------------------------
+    goto end
 )
 
+:push
+echo 💾 Saving your updated world for everyone...
+echo 👤 Your name: %COMMIT_NAME%
 echo.
-echo [INFO] Adding and committing changes...
+set /p "DESCRIPTION=📝 What did you build or change? "
+echo.
+
+if "%DESCRIPTION%"=="" (
+    set "DESCRIPTION=(blank description)"
+) else (
+    set "DESCRIPTION=(%DESCRIPTION%)"
+)
+
+echo -----------------------------
 git add .
-git commit -m "Save Latest Karishma World By %COMMIT_NAME% - %commitMsg%"
-git push origin main
-echo [DONE] World saved and pushed to GitHub.
-pause
+git commit -m "Save Latest Karishma World By %COMMIT_NAME% - %DESCRIPTION%" >nul
+git push origin main >nul
+echo ✅ Your world is now saved online!
+echo -----------------------------
+echo.
+echo 💬 Friends will see this message:
+echo -----------------------------
+echo "%COMMIT_NAME%: %DESCRIPTION%"
+echo -----------------------------
 goto end
 
 :end
-exit
+endlocal
+exit /b
