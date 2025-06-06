@@ -2,6 +2,7 @@
 
 COMMIT_NAME="Sweetu"
 
+echo
 echo "==============================="
 echo "🎮 Karishma World Sync"
 echo "==============================="
@@ -15,58 +16,63 @@ read -rp "Type 1 or 2: " choice
 
 if [[ "$choice" == "1" ]]; then
     if [[ -n $(git status --porcelain) ]]; then
-        echo "⚠️ Your world looks different than the one online."
-        echo "Maybe you forgot to save last time,"
-        echo "or maybe your friend played and saved a new world online."
         echo
-        echo "👉 Press 1 to load your friend's latest world."
+        echo "⚠️ Your world files look different than the one online."
+        echo "Maybe you forgot to save last time,"
+        echo "or maybe a friend played and saved new updates."
+        echo
+        echo "👉 Press 1 to load the updated world from your friend."
         echo "🔙 Press 2 to cancel and go back."
         echo
         read -rp "Type 1 or 2: " pullChoice
         echo
         if [[ "$pullChoice" == "1" ]]; then
-            echo "📦 Saving your current work just in case..."
-            git stash
+            echo "📦 Backing up your current world just in case..."
+            git stash --quiet
 
             echo
             echo "🌍 Downloading latest world from GitHub..."
-            echo "-----------------------------"
-            git pull --rebase origin main
-            echo "-----------------------------"
+            echo
+            git pull --rebase origin main --quiet
+            echo
+            echo "✅ Your world is now updated to the latest version!"
+
+            echo
+            echo "🔁 Restoring your local work..."
+            git stash pop --quiet
             echo
 
-            echo "🔁 Restoring your saved work..."
-            git stash pop
-            echo
-            echo "✅ You now have the latest world!"
-            echo "💬 Last update made by a friend:"
+            echo "💬 Last update message from your friend:"
             git log -1 --pretty=format:"%an: %s"
             echo
-            echo "🕹️ Ready to play!"
+            echo "🕹️ You're ready to play!"
             exit 0
         else
-            echo "🔙 Back to main menu. No changes made."
+            echo "🔙 Cancelled. Returning to main menu."
+            echo
             exec "$0"
         fi
     else
         echo
-        echo "🌍 Downloading latest world from GitHub..."
-        echo "-----------------------------"
-        git pull --rebase origin main
-        echo "-----------------------------"
+        echo "🌍 Checking for updates from GitHub..."
         echo
+        git pull --rebase origin main --quiet
         echo "✅ You already have the latest world!"
-        echo "💬 Last update made by a friend:"
+        echo
+        echo "💬 Last update message from your friend:"
         git log -1 --pretty=format:"%an: %s"
         echo
-        echo "You can start your Minecraft server now 😊"
+        echo "🕹️ Ready to start your Minecraft server!"
         exit 0
     fi
 
 elif [[ "$choice" == "2" ]]; then
-    echo "💾 Saving your world for everyone..."
+    echo
+    echo "💾 Saving your updated world for everyone..."
     echo "👤 Your name: $COMMIT_NAME"
-    read -rp "✏️ What did you build or change in Karishma World? " DESCRIPTION
+    echo
+    read -rp "📝 What did you build or change? " DESCRIPTION
+    echo
 
     if [[ -z "$DESCRIPTION" ]]; then
         DESCRIPTION="()"
@@ -75,12 +81,15 @@ elif [[ "$choice" == "2" ]]; then
     fi
 
     git add .
-    git commit -m "Save Latest Karishma World By $COMMIT_NAME - $DESCRIPTION"
-    git push origin main
+    git commit -m "Save Latest Karishma World By $COMMIT_NAME - $DESCRIPTION" > /dev/null
+    git push origin main --quiet
 
+    echo
     echo "✅ Your world is now saved online!"
-    echo "🌍 Friends will see this when they load the world:"
+    echo
+    echo "💬 Friends will see this message:"
     echo "\"$COMMIT_NAME: $DESCRIPTION\""
+    echo
     exit 0
 
 else
