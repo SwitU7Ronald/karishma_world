@@ -30,26 +30,29 @@ goto main_menu
 
 :pull
 cls
-echo 🔍 Checking local changes...
+echo 🔍 Checking for local changes...
 
-:: Detect local changes
+:: Detect uncommitted changes
 set "changes="
 for /f %%i in ('git status --porcelain') do (
     set "changes=1"
-    goto has_changes
+    goto check_remote
 )
 
-:has_changes
-:: Check if remote has changes
+:check_remote
+:: Fetch the latest from origin
 git fetch origin main >nul
+
+:: Get commit hashes
 for /f %%i in ('git rev-parse HEAD') do set "LOCAL=%%i"
 for /f %%i in ('git rev-parse origin/main') do set "REMOTE=%%i"
 
+:: CASE 1: You have local uncommitted changes
 if defined changes (
-    echo ⚠️  You have local changes not yet saved.
-    echo 💡 Maybe you forgot to save, or someone pushed new updates.
+    echo ⚠️  You have unsaved local changes.
+    echo 💡 Maybe you forgot to save, or someone else updated the world.
     echo.
-    echo 👉  Press 1 to pull latest world (your changes will be backed up)
+    echo 👉  Press 1 to pull the latest world (your changes will be backed up)
     echo 🔙  Press 2 to cancel and go back
     set /p pullChoice=Your choice: 
     if "%pullChoice%"=="1" (
@@ -68,13 +71,17 @@ if defined changes (
         timeout /t 2 >nul
         goto main_menu
     )
-) else if not "%LOCAL%"=="%REMOTE%" (
-    echo 🔄 A new version is available online!
+)
+
+:: CASE 2: Remote is newer
+if not "%LOCAL%"=="%REMOTE%" (
+    echo 🔄 A newer version of the world is available on GitHub!
     echo.
-    echo 👉  Press 1 to pull latest world
+    echo 👉  Press 1 to pull and update your world
     echo 🔙  Press 2 to cancel and go back
-    set /p updateChoice=Your choice: 
-    if "%updateChoice%"=="1" (
+    set /p remoteChoice=Your choice: 
+    if "%remoteChoice%"=="1" (
+        echo 🌍 Pulling latest world from GitHub...
         git pull --rebase origin main >nul
         goto show_log
     ) else (
@@ -82,17 +89,31 @@ if defined changes (
         timeout /t 2 >nul
         goto main_menu
     )
-) else (
-    echo ✅ You already have the latest world!
-    goto show_log
 )
 
-:show_log
+:: CASE 3: Already up-to-date
+echo ✅ Your world is already up to date!
 echo -----------------------------
 echo 💬 Last update message from your friend:
 git log -1 --pretty=format:"%%an: %%s"
 echo -----------------------------
-echo 🕹️  You’re ready to play Minecraft!
+echo.
+echo 👉  Press 1 to go back to main menu
+echo 🔚  Press 2 to exit
+set /p upToDateChoice=Your choice: 
+if "%upToDateChoice%"=="1" (
+    goto main_menu
+) else (
+    exit /b
+)
+
+:show_log
+echo -----------------------------
+echo ✅ World updated successfully!
+echo 💬 Last update message from your friend:
+git log -1 --pretty=format:"%%an: %%s"
+echo -----------------------------
+echo 🕹️  You're ready to play!
 pause
 goto main_menu
 
@@ -101,7 +122,6 @@ cls
 echo 💾 Saving your updated world for everyone...
 echo 👤 Your name: %COMMIT_NAME%
 echo.
-
 set /p "DESCRIPTION=📝 What did you build or change? "
 if "%DESCRIPTION%"=="" set "DESCRIPTION=blank description"
 set "DESCRIPTION=(%DESCRIPTION%)"
