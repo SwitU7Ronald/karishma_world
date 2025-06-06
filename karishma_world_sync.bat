@@ -1,4 +1,5 @@
 @echo off
+chcp 65001 >nul
 :: ============================================
 :: 🎮 Karishma World Sync - Windows Version
 :: ============================================
@@ -15,8 +16,8 @@ echo ===============================
 echo.
 echo What do you want to do?
 echo.
-echo 1. Load latest world from online (before playing)
-echo 2. Save your world to online (after playing)
+echo 1. 📥 Load latest world from online (before playing)
+echo 2. 💾 Save your world to online (after playing)
 echo.
 
 set /p choice=Type 1 or 2: 
@@ -30,8 +31,10 @@ goto end
 
 :pull
 :: Check for uncommitted changes
-for /f %%i in ('git status --porcelain') do set "changes=1"
+set "changes="
+for /f %%i in ('git status --porcelain') do set "changes=1" & goto :hasChanges
 
+:hasChanges
 if defined changes (
     echo ⚠️ Your world files look different than the one online.
     echo Maybe you forgot to save last time,
@@ -114,4 +117,5 @@ goto end
 
 :end
 endlocal
+pause
 exit /b
