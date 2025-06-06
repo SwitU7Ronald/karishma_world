@@ -1,7 +1,7 @@
 @echo off
 setlocal enabledelayedexpansion
 
-set "COMMIT_NAME=Sweetu"
+set "COMMIT_NAME=Lotso"
 
 echo.
 echo ===============================
