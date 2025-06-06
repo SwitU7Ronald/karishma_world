@@ -1,0 +1,17 @@
+# Ignore temporary/session files
+session.lock
+*.dat_old
+
+# Ignore logs and backups
+logs/
+*.log
+crash-reports/
+
+# Optional: Ignore player data (if you don’t want to track individual player state)
+playerdata/
+stats/
+advancements/
+
+# Optional: ignore server config if it's personal
+serverconfig/
+spsSettings.json
