@@ -1,6 +1,5 @@
 #!/bin/bash
 
-# Your name here
 COMMIT_NAME="Sweetu"
 
 echo "==============================="
@@ -12,7 +11,6 @@ echo "2. Save your world to online (after playing)"
 read -rp "Type 1 or 2: " choice
 
 if [[ "$choice" == "1" ]]; then
-    # Check for local changes
     if [[ -n $(git status --porcelain) ]]; then
         echo "⚠️ Your world looks different than the one online."
         echo "Maybe you forgot to save last time,"
@@ -54,6 +52,12 @@ elif [[ "$choice" == "2" ]]; then
     echo "💾 Saving your world for everyone..."
     echo "👤 Your name: $COMMIT_NAME"
     read -rp "✏️ What did you build or change in Karishma World? " DESCRIPTION
+
+    if [[ -z "$DESCRIPTION" ]]; then
+        DESCRIPTION="()"
+    else
+        DESCRIPTION="($DESCRIPTION)"
+    fi
 
     git add .
     git commit -m "Save Latest Karishma World By $COMMIT_NAME - $DESCRIPTION"
