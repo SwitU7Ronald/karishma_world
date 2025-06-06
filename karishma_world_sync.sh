@@ -14,8 +14,6 @@ echo "2. Save your world to online (after playing)"
 echo
 read -rp "Type 1 or 2: " choice
 
-echo
-
 echo "-----------------------------"
 
 if [[ "$choice" == "1" ]]; then
@@ -30,52 +28,46 @@ if [[ "$choice" == "1" ]]; then
         echo
         read -rp "Type 1 or 2: " pullChoice
         echo
-        echo "-----------------------------"
         if [[ "$pullChoice" == "1" ]]; then
+            echo "-----------------------------"
             echo "📦 Backing up your current world just in case..."
-            git stash --quiet
+            git stash
 
-            echo "-----------------------------"
             echo "🌍 Downloading latest world from GitHub..."
-            git pull --rebase origin main --quiet
+            git pull --rebase origin main
 
-            echo "-----------------------------"
             echo "🔁 Restoring your local work..."
-            git stash pop --quiet
+            git stash pop
 
-            echo "-----------------------------"
             echo "✅ Your world is now updated to the latest version!"
-
             echo "-----------------------------"
+
+            echo
             echo "💬 Last update message from your friend:"
             echo "-----------------------------"
             git log -1 --pretty=format:"%an: %s"
+            echo "-----------------------------"
             echo
-            echo "-----------------------------"
             echo "🕹️ You're ready to play!"
-            echo "-----------------------------"
             exit 0
         else
-            echo
-            echo "🔙 Cancelled. Returning to main menu."
+            echo "🔙 Back to main menu. No changes made."
             echo
             exec "$0"
         fi
     else
+        echo "🌍 Downloading latest world from GitHub..."
         echo "-----------------------------"
-        echo "🌍 Checking for updates from GitHub..."
-        git pull --rebase origin main --quiet
-        echo "-----------------------------"
-        echo "✅ You already have the latest world!"
+        git pull --rebase origin main
         echo "-----------------------------"
         echo
+        echo "✅ You already have the latest world!"
         echo "💬 Last update message from your friend:"
         echo "-----------------------------"
         git log -1 --pretty=format:"%an: %s"
+        echo "-----------------------------"
         echo
-        echo "-----------------------------"
-        echo "🕹️ Ready to start your Minecraft server!"
-        echo "-----------------------------"
+        echo "🕹️ You're ready to play!"
         exit 0
     fi
 
@@ -86,29 +78,31 @@ elif [[ "$choice" == "2" ]]; then
     echo
     read -rp "📝 What did you build or change? " DESCRIPTION
     echo
+
     if [[ -z "$DESCRIPTION" ]]; then
         DESCRIPTION="()"
     else
         DESCRIPTION="($DESCRIPTION)"
     fi
 
-    echo "-----------------------------"
     git add .
-    git commit -m "Save Latest Karishma World By $COMMIT_NAME - $DESCRIPTION" > /dev/null
-    git push origin main --quiet
+    git commit -m "Save Latest Karishma World By $COMMIT_NAME - $DESCRIPTION"
+    git push origin main
+
+    echo
+    echo "-----------------------------"
     echo "✅ Your world is now saved online!"
     echo "-----------------------------"
     echo
     echo "💬 Friends will see this message:"
     echo "-----------------------------"
-    echo "\"$COMMIT_NAME: $DESCRIPTION\""
+    echo "$COMMIT_NAME: $DESCRIPTION"
     echo "-----------------------------"
     exit 0
 
 else
     echo
     echo "❌ Please type 1 or 2 to choose."
-    echo "-----------------------------"
     exit 1
 fi
 
