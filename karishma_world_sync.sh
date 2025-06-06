@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/zsh
 
 COMMIT_NAME="Sweetu"
 
@@ -12,7 +12,7 @@ echo
 echo "1. Load latest world from online (before playing)"
 echo "2. Save your world to online (after playing)"
 echo
-read -rp "Type 1 or 2: " choice
+read "choice?Type 1 or 2: "
 
 echo
 
@@ -28,7 +28,7 @@ if [[ "$choice" == "1" ]]; then
         echo "👉 Press 1 to load the updated world from your friend."
         echo "🔙 Press 2 to cancel and go back."
         echo
-        read -rp "Type 1 or 2: " pullChoice
+        read "pullChoice?Type 1 or 2: "
         echo
         echo "-----------------------------"
         if [[ "$pullChoice" == "1" ]]; then
@@ -84,10 +84,10 @@ elif [[ "$choice" == "2" ]]; then
     echo "💾 Saving your updated world for everyone..."
     echo "👤 Your name: $COMMIT_NAME"
     echo
-    read -rp "📝 What did you build or change? " DESCRIPTION
+    read "DESCRIPTION?📝 What did you build or change? "
     echo
     if [[ -z "$DESCRIPTION" ]]; then
-        DESCRIPTION="()"
+        DESCRIPTION="(blank description)"
     else
         DESCRIPTION="($DESCRIPTION)"
     fi
@@ -111,4 +111,3 @@ else
     echo "-----------------------------"
     exit 1
 fi
-
