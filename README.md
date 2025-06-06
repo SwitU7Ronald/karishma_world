@@ -48,6 +48,12 @@ These mods are optional. The world works without them too.
 
 Use our sync tool to keep the world updated between you and your friends.
 
+Important:
+Before running the sync scripts, edit the username in both karishma_world_sync.sh and karishma_world_sync.bat files.
+Change the COMMIT_NAME or username variable from the default to your own name.
+
+
+
 ### macOS
 
 Run this in Terminal:
