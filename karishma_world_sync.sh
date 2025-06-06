@@ -5,9 +5,12 @@ COMMIT_NAME="Sweetu"
 echo "==============================="
 echo "🎮 Karishma World Sync"
 echo "==============================="
+echo
 echo "What do you want to do?"
+echo
 echo "1. Load latest world from online (before playing)"
 echo "2. Save your world to online (after playing)"
+echo
 read -rp "Type 1 or 2: " choice
 
 if [[ "$choice" == "1" ]]; then
@@ -18,12 +21,20 @@ if [[ "$choice" == "1" ]]; then
         echo
         echo "👉 Press 1 to load your friend's latest world."
         echo "🔙 Press 2 to cancel and go back."
+        echo
         read -rp "Type 1 or 2: " pullChoice
+        echo
         if [[ "$pullChoice" == "1" ]]; then
             echo "📦 Saving your current work just in case..."
             git stash
+
+            echo
             echo "🌍 Downloading latest world from GitHub..."
+            echo "-----------------------------"
             git pull --rebase origin main
+            echo "-----------------------------"
+            echo
+
             echo "🔁 Restoring your saved work..."
             git stash pop
             echo
@@ -38,8 +49,12 @@ if [[ "$choice" == "1" ]]; then
             exec "$0"
         fi
     else
+        echo
         echo "🌍 Downloading latest world from GitHub..."
+        echo "-----------------------------"
         git pull --rebase origin main
+        echo "-----------------------------"
+        echo
         echo "✅ You already have the latest world!"
         echo "💬 Last update made by a friend:"
         git log -1 --pretty=format:"%an: %s"
@@ -69,6 +84,7 @@ elif [[ "$choice" == "2" ]]; then
     exit 0
 
 else
+    echo
     echo "❌ Please type 1 or 2 to choose."
     exit 1
 fi
