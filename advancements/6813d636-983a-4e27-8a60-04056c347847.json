@@ -371,6 +371,9 @@
     "criteria": {
       "minecraft:pillager": "2025-06-20 02:56:21 +0530",
       "minecraft:skeleton": "2025-06-15 01:23:59 +0530",
+      "minecraft:witch": "2025-06-21 01:47:55 +0530",
+      "minecraft:ghast": "2025-06-15 03:05:14 +0530",
+      "minecraft:vindicator": "2025-06-21 01:47:55 +0530",
       "minecraft:enderman": "2025-06-15 05:59:01 +0530",
       "minecraft:endermite": "2025-06-20 19:55:50 +0530",
       "minecraft:spider": "2025-06-15 06:06:15 +0530",
@@ -378,7 +381,7 @@
       "minecraft:creeper": "2025-06-15 05:45:52 +0530",
       "minecraft:drowned": "2025-06-20 04:52:32 +0530",
       "minecraft:zombie_villager": "2025-06-20 05:08:45 +0530",
-      "minecraft:ghast": "2025-06-15 03:05:14 +0530"
+      "minecraft:evoker": "2025-06-21 01:48:25 +0530"
     },
     "done": false
   },
@@ -3195,6 +3198,60 @@
   "minecraft:recipes/food/dried_kelp_from_campfire_cooking": {
     "criteria": {
       "has_kelp": "2025-06-20 20:50:12 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/nether_wart_block": {
+    "criteria": {
+      "has_nether_wart": "2025-06-21 01:26:23 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/red_nether_bricks": {
+    "criteria": {
+      "has_nether_wart": "2025-06-21 01:26:23 +0530"
+    },
+    "done": true
+  },
+  "minecraft:nether/brew_potion": {
+    "criteria": {
+      "potion": "2025-06-21 01:30:17 +0530"
+    },
+    "done": true
+  },
+  "minecraft:adventure/voluntary_exile": {
+    "criteria": {
+      "voluntary_exile": "2025-06-21 01:47:55 +0530"
+    },
+    "done": true
+  },
+  "minecraft:adventure/hero_of_the_village": {
+    "criteria": {
+      "hero_of_the_village": "2025-06-21 01:49:05 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_nugget_from_smelting": {
+    "criteria": {
+      "has_iron_axe": "2025-06-21 01:51:47 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/iron_nugget_from_blasting": {
+    "criteria": {
+      "has_iron_axe": "2025-06-21 01:51:47 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/bricks": {
+    "criteria": {
+      "has_brick": "2025-06-21 02:12:04 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/flower_pot": {
+    "criteria": {
+      "has_brick": "2025-06-21 02:12:04 +0530"
     },
     "done": true
   },

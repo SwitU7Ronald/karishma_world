@@ -782,6 +782,7 @@
       "minecraft:pillager": "2025-06-02 18:40:12 +0530",
       "minecraft:skeleton": "2025-06-02 18:29:07 +0530",
       "minecraft:phantom": "2025-06-08 04:44:59 +0530",
+      "minecraft:zombified_piglin": "2025-06-21 02:08:52 +0530",
       "minecraft:witch": "2025-06-18 21:31:26 +0530",
       "minecraft:husk": "2025-06-10 00:34:49 +0530",
       "minecraft:hoglin": "2025-06-18 23:36:41 +0530",
@@ -5322,6 +5323,48 @@
   "minecraft:recipes/decorations/glow_item_frame": {
     "criteria": {
       "has_glow_ink_sac": "2025-06-20 18:19:22 +0530"
+    },
+    "done": true
+  },
+  "master_cutter:recipes/wood/warped": {
+    "criteria": {
+      "requirement": "2025-06-21 01:59:19 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/crimson_planks": {
+    "criteria": {
+      "has_logs": "2025-06-21 02:00:33 +0530"
+    },
+    "done": true
+  },
+  "master_cutter:recipes/wood/crimson": {
+    "criteria": {
+      "requirement": "2025-06-21 02:00:33 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/crimson_hyphae": {
+    "criteria": {
+      "has_log": "2025-06-21 02:00:33 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/warped_planks": {
+    "criteria": {
+      "has_logs": "2025-06-21 01:59:19 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/warped_hyphae": {
+    "criteria": {
+      "has_log": "2025-06-21 01:59:19 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/transportation/warped_fungus_on_a_stick": {
+    "criteria": {
+      "has_warped_fungus": "2025-06-21 01:59:51 +0530"
     },
     "done": true
   },

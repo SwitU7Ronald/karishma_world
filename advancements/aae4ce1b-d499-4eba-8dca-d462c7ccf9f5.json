@@ -1444,11 +1444,13 @@
       "minecraft:skeleton": "2025-06-05 04:33:20 +0530",
       "minecraft:phantom": "2025-06-10 13:42:44 +0530",
       "minecraft:zombified_piglin": "2025-06-12 15:30:05 +0530",
+      "minecraft:witch": "2025-06-21 02:16:09 +0530",
       "minecraft:wither_skeleton": "2025-06-12 15:29:20 +0530",
       "minecraft:husk": "2025-06-07 21:32:40 +0530",
       "minecraft:shulker": "2025-06-20 00:17:11 +0530",
       "minecraft:cave_spider": "2025-06-10 15:04:13 +0530",
       "minecraft:breeze": "2025-06-12 21:50:55 +0530",
+      "minecraft:vindicator": "2025-06-21 02:16:09 +0530",
       "minecraft:silverfish": "2025-06-04 18:43:24 +0530",
       "minecraft:stray": "2025-06-07 21:33:59 +0530",
       "minecraft:enderman": "2025-06-10 16:43:11 +0530",
@@ -1458,7 +1460,8 @@
       "minecraft:creeper": "2025-06-07 23:11:48 +0530",
       "minecraft:drowned": "2025-06-07 01:25:57 +0530",
       "minecraft:zombie_villager": "2025-06-11 02:28:39 +0530",
-      "minecraft:slime": "2025-06-12 21:31:17 +0530"
+      "minecraft:slime": "2025-06-12 21:31:17 +0530",
+      "minecraft:evoker": "2025-06-21 02:16:39 +0530"
     },
     "done": false
   },
