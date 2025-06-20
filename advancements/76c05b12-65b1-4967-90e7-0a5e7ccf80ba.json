@@ -5301,5 +5301,29 @@
     },
     "done": true
   },
+  "craemon:crafting": {
+    "criteria": {
+      "tick": "2025-06-20 18:11:40 +0530"
+    },
+    "done": true
+  },
+  "craemon:main": {
+    "criteria": {
+      "tick": "2025-06-20 18:11:40 +0530"
+    },
+    "done": true
+  },
+  "craemon:craftable_elytra": {
+    "criteria": {
+      "tick": "2025-06-20 18:11:40 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/glow_item_frame": {
+    "criteria": {
+      "has_glow_ink_sac": "2025-06-20 18:19:22 +0530"
+    },
+    "done": true
+  },
   "DataVersion": 4325
 }

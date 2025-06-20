@@ -31,6 +31,7 @@
       "minecraft:savanna_plateau": "2025-06-20 04:17:33 +0530",
       "minecraft:beach": "2025-06-04 16:59:28 +0530",
       "minecraft:dark_forest": "2025-06-15 04:41:11 +0530",
+      "minecraft:stony_peaks": "2025-06-20 22:12:54 +0530",
       "minecraft:mangrove_swamp": "2025-06-18 21:32:32 +0530",
       "minecraft:sparse_jungle": "2025-06-07 17:30:15 +0530",
       "minecraft:river": "2025-06-03 17:35:15 +0530",
@@ -40,9 +41,11 @@
       "minecraft:dripstone_caves": "2025-06-03 17:39:09 +0530",
       "minecraft:snowy_taiga": "2025-06-20 02:12:55 +0530",
       "minecraft:old_growth_birch_forest": "2025-06-15 04:41:14 +0530",
+      "minecraft:grove": "2025-06-20 22:13:00 +0530",
       "minecraft:meadow": "2025-06-20 02:38:43 +0530",
       "minecraft:savanna": "2025-06-03 17:32:33 +0530",
       "minecraft:plains": "2025-06-03 17:19:26 +0530",
+      "minecraft:jagged_peaks": "2025-06-20 22:13:01 +0530",
       "minecraft:pale_garden": "2025-06-20 04:20:24 +0530"
     },
     "done": false
@@ -4838,6 +4841,66 @@
   "minecraft:adventure/voluntary_exile": {
     "criteria": {
       "voluntary_exile": "2025-06-20 02:56:30 +0530"
+    },
+    "done": true
+  },
+  "craemon:crafting": {
+    "criteria": {
+      "tick": "2025-06-20 17:59:02 +0530"
+    },
+    "done": true
+  },
+  "craemon:main": {
+    "criteria": {
+      "tick": "2025-06-20 17:59:02 +0530"
+    },
+    "done": true
+  },
+  "craemon:craftable_elytra": {
+    "criteria": {
+      "tick": "2025-06-20 17:59:02 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/netherite_ingot": {
+    "criteria": {
+      "has_netherite_scrap": "2025-06-20 18:07:00 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/pumpkin_seeds": {
+    "criteria": {
+      "has_pumpkin": "2025-06-20 18:47:40 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/black_bed": {
+    "criteria": {
+      "has_black_wool": "2025-06-20 19:47:16 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/black_carpet": {
+    "criteria": {
+      "has_black_wool": "2025-06-20 19:47:16 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/black_banner": {
+    "criteria": {
+      "has_black_wool": "2025-06-20 19:47:16 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/waxed_copper_grate_from_honeycomb": {
+    "criteria": {
+      "has_copper_grate": "2025-06-20 20:16:08 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/blue_ice": {
+    "criteria": {
+      "has_packed_ice": "2025-06-20 20:16:13 +0530"
     },
     "done": true
   },

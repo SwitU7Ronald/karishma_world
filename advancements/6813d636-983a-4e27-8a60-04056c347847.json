@@ -372,6 +372,7 @@
       "minecraft:pillager": "2025-06-20 02:56:21 +0530",
       "minecraft:skeleton": "2025-06-15 01:23:59 +0530",
       "minecraft:enderman": "2025-06-15 05:59:01 +0530",
+      "minecraft:endermite": "2025-06-20 19:55:50 +0530",
       "minecraft:spider": "2025-06-15 06:06:15 +0530",
       "minecraft:zombie": "2025-06-15 06:05:54 +0530",
       "minecraft:creeper": "2025-06-15 05:45:52 +0530",
@@ -3092,6 +3093,108 @@
   "minecraft:recipes/misc/leather_horse_armor": {
     "criteria": {
       "has_leather": "2025-06-20 04:53:22 +0530"
+    },
+    "done": true
+  },
+  "craemon:crafting": {
+    "criteria": {
+      "tick": "2025-06-20 18:04:21 +0530"
+    },
+    "done": true
+  },
+  "craemon:main": {
+    "criteria": {
+      "tick": "2025-06-20 18:04:21 +0530"
+    },
+    "done": true
+  },
+  "craemon:craftable_elytra": {
+    "criteria": {
+      "tick": "2025-06-20 18:04:21 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/misc/netherite_ingot": {
+    "criteria": {
+      "has_netherite_scrap": "2025-06-20 18:06:04 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/end_crystal": {
+    "criteria": {
+      "has_ender_eye": "2025-06-20 18:11:07 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/ender_chest": {
+    "criteria": {
+      "has_ender_eye": "2025-06-20 18:11:07 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/redstone/redstone": {
+    "criteria": {
+      "has_redstone_block": "2025-06-20 18:44:29 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/light_gray_bed": {
+    "criteria": {
+      "has_light_gray_wool": "2025-06-20 20:16:51 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/painting": {
+    "criteria": {
+      "has_wool": "2025-06-20 20:16:51 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/light_gray_banner": {
+    "criteria": {
+      "has_light_gray_wool": "2025-06-20 20:16:51 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/light_gray_carpet": {
+    "criteria": {
+      "has_light_gray_wool": "2025-06-20 20:16:51 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/black_bed": {
+    "criteria": {
+      "has_black_wool": "2025-06-20 20:17:20 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/black_carpet": {
+    "criteria": {
+      "has_black_wool": "2025-06-20 20:17:20 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/decorations/black_banner": {
+    "criteria": {
+      "has_black_wool": "2025-06-20 20:17:20 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/dried_kelp_from_smoking": {
+    "criteria": {
+      "has_kelp": "2025-06-20 20:50:12 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/dried_kelp_from_smelting": {
+    "criteria": {
+      "has_kelp": "2025-06-20 20:50:12 +0530"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/dried_kelp_from_campfire_cooking": {
+    "criteria": {
+      "has_kelp": "2025-06-20 20:50:12 +0530"
     },
     "done": true
   },
